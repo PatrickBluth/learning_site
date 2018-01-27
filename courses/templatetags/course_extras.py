@@ -2,6 +2,10 @@ from django import template
 
 from courses.models import Course
 
+
+import markdown2
+from django.utils.safestring import mark_safe
+
 register = template.Library()
 
 @register.simple_tag
@@ -15,4 +19,15 @@ def nav_courses_list():
     courses = Course.objects.all()
     return {'courses':courses}
 
+@register.filter('time_estimate')
+def time_estimate(word_count):
+    """Estimes the numbers of minutes it will take to complete
+    a step based on the passed-in wordcount"""
+    minutes = round(word_count/20)
+    return minutes
 
+@register.filter("markdown_to_html")
+def markdown_to_html(markdown_text):
+    """Converts markdown text to html"""
+    html_body = markdown2.markdown(markdown_text)
+    return mark_safe(html_body)
