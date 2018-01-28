@@ -25,6 +25,7 @@ urlpatterns = [
     path('courses/', include('courses.urls'), name='list'),
     path('admin/', admin.site.urls),
     path('', views.homepage, name='homepage'),
+    path('suggest/', views.suggestion_view, name='suggestion')
 ]
 
 urlpatterns += staticfiles_urlpatterns()
