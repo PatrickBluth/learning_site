@@ -76,23 +76,11 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="150">
-              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="course_nav.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/courses/templates/courses/course_nav.html">
-=======
             <state relative-caret-position="200">
               <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
 =======
       <file leaf-file-name="modernizr.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/vendor/modernizr.js">
->>>>>>> design
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -111,17 +99,6 @@
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-=======
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,7 +106,6 @@
               <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
 >>>>>>> forms
               <folding />
->>>>>>> design
             </state>
           </provider>
         </entry>
@@ -306,8 +282,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,16 +404,12 @@
     <frame x="1070" y="0" width="1100" height="1390" extended-state="1" />
     <editor active="true" />
     <layout>
-<<<<<<< HEAD
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25396827" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38392857" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
 =======
     <frame x="1070" y="11" width="1100" height="1379" extended-state="1" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38392857" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
 >>>>>>> forms
->>>>>>> design
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -503,8 +475,6 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/learning_site/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3050">
@@ -534,13 +504,10 @@
       </provider>
     </entry>
 <<<<<<< HEAD
->>>>>>> design
     <entry file="file://$PROJECT_DIR$/courses/templates/courses/step_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="19" />
-<<<<<<< HEAD
-=======
 =======
     <entry file="file://$PROJECT_DIR$/learning_site/views.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -564,7 +531,6 @@
         <state relative-caret-position="650">
           <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
 >>>>>>> forms
->>>>>>> design
           <folding />
         </state>
       </provider>
@@ -583,12 +549,7 @@
           <caret line="32" column="31" lean-forward="false" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
 <<<<<<< HEAD
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
-=======
-<<<<<<< HEAD
-          <folding>
             <element signature="e#0#27#0" expanded="false" />
->>>>>>> design
           </folding>
         </state>
       </provider>
@@ -605,8 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-<<<<<<< HEAD
-=======
 =======
         </state>
       </provider>
@@ -623,7 +582,6 @@
         <state relative-caret-position="150">
           <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
 >>>>>>> forms
->>>>>>> design
           <folding />
         </state>
       </provider>
@@ -633,9 +591,6 @@
         <state relative-caret-position="600">
           <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
 <<<<<<< HEAD
-          <folding />
-=======
-<<<<<<< HEAD
           <folding>
             <element signature="e#1137#1143#0" expanded="true" />
             <element signature="e#1427#1433#0" expanded="true" />
@@ -643,24 +598,15 @@
 =======
           <folding />
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> design
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
-            <folding />
-          </first_editor>
-          <second_editor />
-=======
           </first_editor>
           <second_editor />
 =======
@@ -676,7 +622,6 @@
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -699,12 +644,9 @@
         <state relative-caret-position="275">
           <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
           <folding />
 =======
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -913,10 +855,7 @@
 =======
         <state relative-caret-position="150">
           <caret line="39" column="30" lean-forward="false" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-<<<<<<< HEAD
-=======
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -928,8 +867,6 @@
           <folding />
 =======
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-<<<<<<< HEAD
-=======
 >>>>>>> forms
         </state>
       </provider>
@@ -940,7 +877,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -952,10 +888,7 @@
 =======
         <state relative-caret-position="275">
           <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-<<<<<<< HEAD
-=======
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -984,10 +917,7 @@
 =======
         <state relative-caret-position="650">
           <caret line="26" column="2" lean-forward="true" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
-<<<<<<< HEAD
-=======
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -1046,11 +976,6 @@
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
-        <state relative-caret-position="150">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding />
-=======
-<<<<<<< HEAD
         <state relative-caret-position="200">
           <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
@@ -1070,7 +995,6 @@
           <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
           <folding />
 >>>>>>> forms
->>>>>>> design
         </state>
       </provider>
     </entry>
@@ -1087,17 +1011,12 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-=======
     <entry file="file://$PROJECT_DIR$/learning_site/forms.py">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
->>>>>>> design
         <state relative-caret-position="25">
           <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
@@ -1125,15 +1044,6 @@
           <caret line="2" column="1" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="1" />
 >>>>>>> forms
           <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
