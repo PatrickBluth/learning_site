@@ -23,8 +23,9 @@
             </dl>
         </article>
         {% if user.is_authenticated %}
-        {% endif %}
+
         <hr>
     <a href="{% url 'courses:quiz_create' course_pk=course.id %}" class="button">New Quiz</a>
+    {% endif %}
     </div>
 {% endblock %}
