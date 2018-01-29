@@ -22,8 +22,8 @@ def course_detail(request, pk):
 
 def text_detail(request, course_pk, step_pk):
     step = get_object_or_404(models.Text, course_id=course_pk, pk=step_pk)
-    return render(request, 'courses/step_detail.html', {'step': step})
+    return render(request, 'courses/text_detail.html', {'step': step})
 
 def quiz_detail(request, course_pk, step_pk):
     step = get_object_or_404(models.Quiz, course_id=course_pk, pk=step_pk)
-    return render(request, 'courses/step_detail.html', {'step': step})
+    return render(request, 'courses/quiz_detail.html', {'step': step})
