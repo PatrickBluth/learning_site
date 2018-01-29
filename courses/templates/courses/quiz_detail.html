@@ -13,5 +13,9 @@
             {{ block.super }}
             <h1>{{ step.title }}</h1>
         </article>
+    {% if user.is_authenticated %}
+        <hr>
+        <a href="{% url 'courses:quiz_edit' course_pk=step.course.pk quiz_pk=step.pk %}", class="button">Edit Quiz</a>
+        {% endif %}
     </div>
 {% endblock %}
