@@ -3,7 +3,7 @@ from django.utils.safestring import mark_safe
 
 import markdown2
 
-from courses.models import Course
+from courses.models import Course, Question
 
 
 register = template.Library()
@@ -12,6 +12,14 @@ register = template.Library()
 def newest_course():
     """Gets the most recent course that was added to the library"""
     return Course.objects.latest('created_at')
+
+@register.simple_tag()
+def question_type_to_str():
+    """Returns either 'Multiple Choice Question' or 'True/False Question' depending on the type"""
+    if Question.question_type == 'tf':
+        return 'True/False Question'
+    else:
+        return 'Multiple Choice Question'
 
 
 @register.inclusion_tag('courses/course_nav.html')
@@ -35,3 +43,4 @@ def markdown_to_html(markdown_text):
     """Converts markdown text to HTML"""
     html_body = markdown2.markdown(markdown_text)
     return mark_safe(html_body)
+
