@@ -33,6 +33,36 @@ def quiz_detail(request, course_pk, step_pk):
     return render(request, 'courses/quiz_detail.html', {'step': step})
 
 @login_required
+def text_create(request, course_pk):
+    course = get_object_or_404(models.Course, pk=course_pk)
+    form = forms.TextForm()
+
+    if request.method == 'POST':
+        form = forms.TextForm(request.POST)
+        if form.is_valid():
+            text = form.save(commit=False)
+            text.course = course
+            text.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 'Text post added!')
+            return HttpResponseRedirect(text.get_absolute_url())
+    return render(request, 'courses/text_form.html', {'form': form, 'course': course})
+
+@login_required
+def text_edit(request, course_pk, text_pk):
+    text = get_object_or_404(models.Text, pk=text_pk, course_id=course_pk)
+    form = forms.TextForm(instance=text)
+
+    if request.method == 'POST':
+        form = forms.TextForm(instance=text, data=request.POST)
+        if form.is_valid():
+            text = form.save(commit=False)
+            form.save()
+            messages.success(request, "Updated {}".format(form.cleaned_data['title']))
+            return HttpResponseRedirect(text.get_absolute_url())
+    return render(request, 'courses/text_form.html', {'form': form, 'course': text.course})
+
+@login_required
 def quiz_create(request, course_pk):
     course = get_object_or_404(models.Course, pk=course_pk)
     form = forms.QuizForm()

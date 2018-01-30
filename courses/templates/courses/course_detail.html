@@ -26,6 +26,7 @@
 
         <hr>
     <a href="{% url 'courses:quiz_create' course_pk=course.id %}" class="button">New Quiz</a>
+    <a href="{% url 'courses:text_create' course_pk=course.id %}" class="button">New Text Post</a>
     {% endif %}
     </div>
 {% endblock %}

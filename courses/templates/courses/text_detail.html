@@ -14,5 +14,10 @@
             <h1>{{ step.title }}</h1>
             {{ step.content|markdown_to_html }}
         </article>
+
+    {% if user.is_authenticated %}
+        <hr>
+        <a href="{% url 'courses:text_edit' course_pk=step.course.pk text_pk=step.pk %}", class="button">Edit Text Post</a>
+        {% endif %}
     </div>
 {% endblock %}
