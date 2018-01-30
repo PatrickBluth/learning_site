@@ -43,8 +43,7 @@ def text_create(request, course_pk):
             text = form.save(commit=False)
             text.course = course
             text.save()
-            messages.add_message(request, messages.SUCCESS,
-                                 'Text post added!')
+            messages.success(request, 'New text post created!')
             return HttpResponseRedirect(text.get_absolute_url())
     return render(request, 'courses/text_form.html', {'form': form, 'course': course})
 
@@ -73,8 +72,7 @@ def quiz_create(request, course_pk):
             quiz = form.save(commit=False)
             quiz.course = course
             quiz.save()
-            messages.add_message(request, messages.SUCCESS,
-                                 'Quiz added!')
+            messages.success(request, 'New quiz created!')
             return HttpResponseRedirect(quiz.get_absolute_url())
     return render(request, 'courses/quiz_form.html', {'form': form, 'course': course})
 
@@ -107,7 +105,7 @@ def create_question(request, quiz_pk, question_type):
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
-            question = form.save()
+            question = form.save(commit=False)
             question.quiz = quiz
             question.save()
             messages.success(request, 'Added question!')
@@ -117,3 +115,24 @@ def create_question(request, quiz_pk, question_type):
         'form': form,
         'question_type': question_type
     })
+
+@login_required
+def question_edit(request, quiz_pk, question_pk):
+    question = get_object_or_404(models.Question, pk=question_pk, quiz_id=quiz_pk)
+    if hasattr(question, 'truefalsequestion'):
+        form_class = forms.TrueFalseQuestionForm
+        question = question.truefalsequestion
+    else:
+        form_class = forms.MultipleChoiceQuestionForm
+        question = question.multiplechoicequestion
+    form = form_class(instance=question)
+
+    if request.method == 'POST':
+        form = form_class(instance=question, data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Updated question!')
+            return HttpResponseRedirect(question.quiz.get_absolute_url())
+    return render(request, 'courses/question_form.html', {
+        'form': form,
+        'quiz': question.quiz})

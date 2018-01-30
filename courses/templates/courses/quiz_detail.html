@@ -12,6 +12,19 @@
         <article>
             {{ block.super }}
             <h1>{{ step.title }}</h1>
+            <ul class="no-bullet">
+                {% for question in step.question_set.all %}
+                <li>
+                    <h2>{{ question.prompt }}</h2>
+                    {% for answer in question.answer_set.all %}
+                        <div class="callout">{{ answer.text }}</div>
+                    {% endfor %}
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'courses:question_edit' quiz_pk=step.pk  question_pk=question.pk %}" class="button">Edit</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
         </article>
     {% if user.is_authenticated %}
         <hr>
