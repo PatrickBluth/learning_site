@@ -11,11 +11,16 @@
 {% block content %}
     <div class="row columns">
         {{ block.super }}
-     <h1>{{ form.instance.prompt|default:"Make a New Question" }}</h1>
+        <h1>{{ form.instance.prompt|default:"Make a New Question" }}</h1>
         <form method="POST" action="">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="submit" class="button" value="Save">
         </form>
+        {% if user.is_authenticated and form.instance.pk %}
+            <hr>
+            <a href="{% url 'courses:answer_create' question_pk=form.instance.pk %}" class="button">Add Answer</a>
+        
+        {% endif %}
     </div>
 {% endblock %}
