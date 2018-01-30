@@ -93,7 +93,7 @@ def quiz_edit(request, course_pk, quiz_pk):
 
 
 @login_required
-def create_question(request, quiz_pk, question_type):
+def question_create(request, quiz_pk, question_type):
     quiz = get_object_or_404(models.Quiz, pk=quiz_pk)
     if question_type == 'tf':
         form_class = forms.TrueFalseQuestionForm
@@ -104,16 +104,17 @@ def create_question(request, quiz_pk, question_type):
 
     if request.method == 'POST':
         form = form_class(request.POST)
+
         if form.is_valid():
             question = form.save(commit=False)
             question.quiz = quiz
             question.save()
-            messages.success(request, 'Added question!')
-            return HttpResponseRedirect(quiz.get_absolute_url)
+            messages.success(request, "Added question")
+            return HttpResponseRedirect(quiz.get_absolute_url())
+
     return render(request, 'courses/question_form.html', {
         'quiz': quiz,
         'form': form,
-        'question_type': question_type
     })
 
 @login_required
@@ -137,22 +138,27 @@ def question_edit(request, quiz_pk, question_pk):
         'form': form,
         'quiz': question.quiz})
 
-@login_required()
-def answer_form(request, question_pk):
-    question = get_object_or_404(models.Question, pk=question_pk)
 
-    form = forms.AnswerForm()
+@login_required
+def answer_form(request, question_pk, answer_pk=None):
+    question = get_object_or_404(models.Question, pk=question_pk)
+    formset = forms.AnswerFormSet(queryset=question.answer_set.all())
 
     if request.method == 'POST':
-        form = forms.AnswerForm(request.POST)
-        if form.is_valid():
-            answer = form.save(commit=False)
-            answer.question = question
-            answer.save()
-            messages.success(request, "Answer added!")
-            return HttpResponseRedirect(question.get_absolute_url())
-    return render(request, "courses/answer_form.html", {
-        'question': question,
-        'form': form
+        formset = forms.AnswerFormSet(request.POST,
+                                      queryset=question.answer_set.all())
+
+        if formset.is_valid():
+            answers = formset.save(commit=False)
+
+            for answer in answers:
+                answer.question = question
+                answer.save()
+            messages.success(request, "Added answers")
+            return HttpResponseRedirect(question.quiz.get_absolute_url())
+    return render(request, 'courses/answer_form.html', {
+        'formset': formset,
+        'question': question
     })
+
 

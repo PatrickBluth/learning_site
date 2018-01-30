@@ -43,6 +43,7 @@ class MultipleChoiceQuestionForm(forms.ModelForm):
             'shuffle_answers'
         ]
 
+
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = models.Answer
@@ -51,3 +52,10 @@ class AnswerForm(forms.ModelForm):
             'text',
             'correct'
         ]
+
+
+AnswerFormSet = forms.modelformset_factory(
+    models.Answer,
+    form=AnswerForm,
+    extra=5
+)

@@ -14,7 +14,7 @@ urlpatterns = [
     path('<int:course_pk>/create_quiz/', views.quiz_create, name='quiz_create'),
     path('<int:course_pk>/edit_quiz/<int:quiz_pk>/', views.quiz_edit, name='quiz_edit'),
     path('<int:quiz_pk>/create_question/(?P<question_type>mc|tf)/$',
-         views.create_question, name='create_question'),
+         views.question_create, name='question_create'),
     path('<int:quiz_pk>/edit_question/<int:question_pk>/', views.question_edit, name='question_edit'),
     path('<int:question_pk>/create_answer/', views.answer_form, name='answer_create'),
     path('<int:pk>/', views.course_detail, name='detail'),
