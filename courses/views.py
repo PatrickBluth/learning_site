@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 
 from . import models, forms
 
@@ -193,4 +194,7 @@ def answer_form(request, question_pk, answer_pk=None):
 
 def courses_by_teacher(request, teacher):
     courses = models.Course.objects.filter(teacher__username=teacher)
-    return render(request, 'courses/course_list.html', {'courses':courses})
+    if not courses:
+        return render(request, 'courses/no_teacher.html', {'teacher':teacher})
+    return render(request, 'courses/course_list.html', {'courses': courses})
+
