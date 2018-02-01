@@ -12,6 +12,7 @@ class TextForm(forms.ModelForm):
             'description',
             'order',
             'content'
+
         ]
 
 

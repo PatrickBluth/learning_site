@@ -9,14 +9,14 @@ from django.urls import reverse
 from . import models, forms
 
 def course_list(request):
-    courses = models.Course.objects.all()
+    courses = models.Course.objects.filter(published=True)
     email = 'questsions@learning_site.com'
     return render(request, 'courses/course_list.html', {'courses': courses,
                                                         'email': email})
 
 
 def course_detail(request, pk):
-    course = get_object_or_404(models.Course, pk=pk)
+    course = get_object_or_404(models.Course, pk=pk, published=True)
     steps = sorted(chain(course.text_set.all(), course.quiz_set.all()),
                    key=lambda step: step.order)
     return render(request, 'courses/course_detail.html',
@@ -25,17 +25,17 @@ def course_detail(request, pk):
 
 
 def text_detail(request, course_pk, step_pk):
-    step = get_object_or_404(models.Text, course_id=course_pk, pk=step_pk)
+    step = get_object_or_404(models.Text, course_id=course_pk, pk=step_pk, course__published=True)
     return render(request, 'courses/text_detail.html', {'step': step})
 
 
 def quiz_detail(request, course_pk, step_pk):
-    step = get_object_or_404(models.Quiz, course_id=course_pk, pk=step_pk)
+    step = get_object_or_404(models.Quiz, course_id=course_pk, pk=step_pk, course__published=True)
     return render(request, 'courses/quiz_detail.html', {'step': step})
 
 @login_required
 def text_create(request, course_pk):
-    course = get_object_or_404(models.Course, pk=course_pk)
+    course = get_object_or_404(models.Course, pk=course_pk, course__published=True)
     form = forms.TextForm()
 
     if request.method == 'POST':
@@ -49,8 +49,8 @@ def text_create(request, course_pk):
     return render(request, 'courses/text_form.html', {'form': form, 'course': course})
 
 @login_required
-def text_edit(request, course_pk, text_pk):
-    text = get_object_or_404(models.Text, pk=text_pk, course_id=course_pk)
+def text_edit(request, course_pk, text_pk, ):
+    text = get_object_or_404(models.Text, pk=text_pk, course_id=course_pk, course__published=True)
     form = forms.TextForm(instance=text)
 
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def text_edit(request, course_pk, text_pk):
 
 @login_required
 def quiz_create(request, course_pk):
-    course = get_object_or_404(models.Course, pk=course_pk)
+    course = get_object_or_404(models.Course, pk=course_pk, published=True)
     form = forms.QuizForm()
 
     if request.method == 'POST':
@@ -80,7 +80,7 @@ def quiz_create(request, course_pk):
 
 @login_required
 def quiz_edit(request, course_pk, quiz_pk):
-    quiz = get_object_or_404(models.Quiz, pk=quiz_pk, course_id=course_pk)
+    quiz = get_object_or_404(models.Quiz, pk=quiz_pk, course_id=course_pk, course__published=True)
     form = forms.QuizForm(instance=quiz)
 
     if request.method == 'POST':
@@ -94,7 +94,7 @@ def quiz_edit(request, course_pk, quiz_pk):
 
 
 @login_required
-def question_create(request, quiz_pk, question_type):
+def question_create(request, quiz_pk, question_type, ):
     quiz = get_object_or_404(models.Quiz, pk=quiz_pk)
     if question_type == 'tf':
         form_class = forms.TrueFalseQuestionForm
@@ -192,13 +192,13 @@ def answer_form(request, question_pk, answer_pk=None):
     })
 
 
-def courses_by_teacher(request, teacher):
-    courses = models.Course.objects.filter(teacher__username=teacher)
+def courses_by_teacher(request, teacher,):
+    courses = models.Course.objects.filter(teacher__username=teacher, published=True)
     if not courses:
         return render(request, 'courses/no_teacher.html', {'teacher':teacher})
     return render(request, 'courses/course_list.html', {'courses': courses})
 
 def search(request):
     term = request.GET.get('q')
-    courses = models.Course.objects.filter(title__icontains=term)
+    courses = models.Course.objects.filter(title__icontains=term, published=True)
     return render(request, 'courses/course_list.html', {'courses': courses})
