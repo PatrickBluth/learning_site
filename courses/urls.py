@@ -18,5 +18,6 @@ urlpatterns = [
     path('<int:quiz_pk>/edit_question/<int:question_pk>/', views.question_edit, name='question_edit'),
     path('<int:question_pk>/create_answer/', views.answer_form, name='answer_create'),
     path('by/<str:teacher>', views.courses_by_teacher, name='by_teacher'),
+    path('search/', views.search, name='search'),
     path('<int:pk>/', views.course_detail, name='detail'),
 ]

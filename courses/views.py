@@ -198,3 +198,7 @@ def courses_by_teacher(request, teacher):
         return render(request, 'courses/no_teacher.html', {'teacher':teacher})
     return render(request, 'courses/course_list.html', {'courses': courses})
 
+def search(request):
+    term = request.GET.get('q')
+    courses = models.Course.objects.filter(title__icontains=term)
+    return render(request, 'courses/course_list.html', {'courses': courses})
