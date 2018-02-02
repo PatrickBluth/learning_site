@@ -25,6 +25,7 @@
         {% if user.is_authenticated %}
 
         <hr>
+    <a href="{% url 'courses:course_edit' course_pk=course.id %}" class="button">Edit Course</a>
     <a href="{% url 'courses:quiz_create' course_pk=course.id %}" class="button">New Quiz</a>
     <a href="{% url 'courses:text_create' course_pk=course.id %}" class="button">New Text Post</a>
     {% endif %}

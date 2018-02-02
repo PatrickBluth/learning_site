@@ -46,7 +46,22 @@ def course_create(request):
             course.save()
             messages.success(request, 'New course created!')
             return HttpResponseRedirect(course.get_absolute_url())
-    return render(request, 'courses/course_form.html', {'form':form})
+    return render(request, 'courses/course_form.html', {'form': form})
+
+
+@login_required
+def course_edit(request, course_pk):
+    course = get_object_or_404(models.Course, pk=course_pk)
+    form = forms.CourseForm(instance=course)
+
+    if request.method == 'POST':
+        form = forms.CourseForm(instance=course, data=request.POST)
+        if form.is_valid():
+            course = form.save(commit=False)
+            form.save()
+            messages.success(request, 'Updated {}'.format(form.cleaned_data['title']))
+            return HttpResponseRedirect(course.get_absolute_url())
+    return render(request, 'courses/course_form.html', {'form': form, 'course': course })
 
 
 @login_required
@@ -64,6 +79,7 @@ def text_create(request, course_pk):
             return HttpResponseRedirect(text.get_absolute_url())
     return render(request, 'courses/text_form.html', {'form': form, 'course': course})
 
+
 @login_required
 def text_edit(request, course_pk, text_pk, ):
     text = get_object_or_404(models.Text, pk=text_pk, course_id=course_pk, course__published=True)
@@ -77,6 +93,7 @@ def text_edit(request, course_pk, text_pk, ):
             messages.success(request, "Updated {}".format(form.cleaned_data['title']))
             return HttpResponseRedirect(text.get_absolute_url())
     return render(request, 'courses/text_form.html', {'form': form, 'course': text.course})
+
 
 @login_required
 def quiz_create(request, course_pk):
