@@ -5,8 +5,10 @@
 {% block content %}
     <div class="row columns">
         {{ block.super }}
+        {% if user.is_authenticated %}
         <hr>
         <a href="{% url 'courses:course_create' %}" class="button">New Course</a>
+        {% endif %}
     </div>
     <div class="row">
         {%  for course in courses %}
