@@ -5,6 +5,8 @@
 {% block content %}
     <div class="row columns">
         {{ block.super }}
+        <hr>
+        <a href="{% url 'courses:course_create' %}" class="button">New Course</a>
     </div>
     <div class="row">
         {%  for course in courses %}
@@ -23,4 +25,5 @@
             {% endif %}
         {% endfor %}
     </div>
+
 {% endblock %}

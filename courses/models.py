@@ -11,8 +11,14 @@ class Course(models.Model):
     teacher = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(default='', max_length=100)
     published = models.BooleanField(default=False)
+
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('courses:detail', kwargs={
+            'course_pk': self.course_id,
+        })
 
 
 class Step(models.Model):

@@ -1,0 +1,17 @@
+{% extends "courses/layout.html" %}
+
+{% block title %} {{ form.instance.title|default:"New Course" }}{{ block.super }}{% endblock %}
+
+
+
+{% block content %}
+<div class="columns">
+    {{ block.super }}
+    <h1>{{ form.instance.title|default:"Make a New Course" }}</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="button" value="save">
+    </form>
+</div>
+{% endblock %}

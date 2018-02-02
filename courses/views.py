@@ -8,6 +8,7 @@ from django.urls import reverse
 
 from . import models, forms
 
+
 def course_list(request):
     courses = models.Course.objects.filter(published=True)
     email = 'questsions@learning_site.com'
@@ -32,6 +33,21 @@ def text_detail(request, course_pk, step_pk):
 def quiz_detail(request, course_pk, step_pk):
     step = get_object_or_404(models.Quiz, course_id=course_pk, pk=step_pk, course__published=True)
     return render(request, 'courses/quiz_detail.html', {'step': step})
+
+
+@login_required
+def course_create(request):
+    form = forms.CourseForm()
+
+    if request.method == 'POST':
+        form = forms.CourseForm(request.POST)
+        if form.is_valid():
+            course = form.save(commit=False)
+            course.save()
+            messages.success(request, 'New course created!')
+            return HttpResponseRedirect(course.get_absolute_url())
+    return render(request, 'courses/course_form.html', {'form':form})
+
 
 @login_required
 def text_create(request, course_pk):
@@ -197,6 +213,7 @@ def courses_by_teacher(request, teacher,):
     if not courses:
         return render(request, 'courses/no_teacher.html', {'teacher':teacher})
     return render(request, 'courses/course_list.html', {'courses': courses})
+
 
 def search(request):
     term = request.GET.get('q')

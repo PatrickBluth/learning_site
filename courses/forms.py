@@ -4,6 +4,18 @@ from django import forms
 from . import models
 
 
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = models.Course
+        fields = [
+            'title',
+            'description',
+            'teacher',
+            'subject',
+            'published'
+        ]
+
+
 class TextForm(forms.ModelForm):
     class Meta:
         model = models.Text
@@ -65,6 +77,11 @@ class AnswerForm(forms.ModelForm):
         ]
 
 
+CourseFormSet = forms.modelformset_factory(
+    models.Course,
+    form=CourseForm,
+    min_num=1,
+)
 
 AnswerFormSet = forms.modelformset_factory(
     models.Answer,
