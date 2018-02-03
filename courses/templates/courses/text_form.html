@@ -14,7 +14,11 @@
     <form method="POST" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="button" value="save">
+        <input type="submit" class="button" value="Save" name="text_save">
+        {% if form.instance.pk %}
+        <input type="submit" class="button" value="Delete"
+               name="text_delete" onclick="return confirm('Are you sure you want to delete the course?')">
+        {% endif %}
     </form>
 </div>
 {% endblock %}

@@ -89,15 +89,21 @@ def text_create(request, course_pk):
 @login_required
 def text_edit(request, course_pk, text_pk, ):
     text = get_object_or_404(models.Text, pk=text_pk, course_id=course_pk, course__published=True)
+    course = get_object_or_404(models.Course, pk=course_pk)
     form = forms.TextForm(instance=text)
 
     if request.method == 'POST':
         form = forms.TextForm(instance=text, data=request.POST)
-        if form.is_valid():
-            text = form.save(commit=False)
-            form.save()
-            messages.success(request, "Updated {}".format(form.cleaned_data['title']))
-            return HttpResponseRedirect(text.get_absolute_url())
+        if 'text_save' in form.data:
+            if form.is_valid():
+                text = form.save(commit=False)
+                form.save()
+                messages.success(request, "Updated {}".format(form.cleaned_data['title']))
+                return HttpResponseRedirect(text.get_absolute_url())
+        elif 'text_delete' in form.data:
+            messages.success(request, 'Deleted Text Post: {}'.format(text.title))
+            text.delete()
+            return HttpResponseRedirect(reverse('courses:detail', kwargs={'pk': course_pk}))
     return render(request, 'courses/text_form.html', {'form': form, 'course': text.course})
 
 
@@ -124,11 +130,16 @@ def quiz_edit(request, course_pk, quiz_pk):
 
     if request.method == 'POST':
         form = forms.QuizForm(instance=quiz, data=request.POST)
-        if form.is_valid():
-            quiz = form.save(commit=False)
-            form.save()
-            messages.success(request, "Updated {}".format(form.cleaned_data['title']))
-            return HttpResponseRedirect(quiz.get_absolute_url())
+        if 'quiz_save' in form.data:
+            if form.is_valid():
+                quiz = form.save(commit=False)
+                form.save()
+                messages.success(request, "Updated {}".format(form.cleaned_data['title']))
+                return HttpResponseRedirect(quiz.get_absolute_url())
+        elif 'quiz_delete' in form.data:
+            messages.success(request, 'Deleted quiz: {}'.format(quiz.title))
+            quiz.delete()
+            return HttpResponseRedirect(reverse('courses:detail', kwargs={'pk': course_pk}))
     return render(request, 'courses/quiz_form.html', {'form': form, 'course': quiz.course})
 
 
