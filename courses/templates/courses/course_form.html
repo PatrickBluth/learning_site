@@ -12,7 +12,8 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="button" name='course_save' value="Save">
-        <input  type="submit" class="button" name='course_delete' value="Delete">
+        <input  type="submit" class="button" name='course_delete'
+                value="Delete" onclick="return confirm('Are you sure you want to delete the course?')">
 
     </form>
 
