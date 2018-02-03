@@ -71,12 +71,6 @@ def course_edit(request, course_pk):
 
 
 @login_required
-def course_delete(DeleteView):
-    model = models.Course
-    success_url = reverse('courses:course_list')
-
-
-@login_required
 def text_create(request, course_pk):
     course = get_object_or_404(models.Course, pk=course_pk, course__published=True)
     form = forms.TextForm()
