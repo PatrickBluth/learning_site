@@ -78,7 +78,8 @@ class MultipleChoiceQuestion(Question):
 
 
 class TrueFalseQuestion(Question):
-   pass
+    pass
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

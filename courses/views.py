@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.views.generic.edit import DeleteView
 
 from . import models, forms
 
@@ -56,12 +57,23 @@ def course_edit(request, course_pk):
 
     if request.method == 'POST':
         form = forms.CourseForm(instance=course, data=request.POST)
-        if form.is_valid():
-            course = form.save(commit=False)
-            form.save()
-            messages.success(request, 'Updated {}'.format(form.cleaned_data['title']))
-            return HttpResponseRedirect(course.get_absolute_url())
+        if 'course_save' in form.data:
+            if form.is_valid():
+                course = form.save(commit=False)
+                form.save()
+                messages.success(request, 'Updated {}'.format(form.cleaned_data['title']))
+                return HttpResponseRedirect(course.get_absolute_url())
+        elif 'course_delete' in form.data:
+            messages.success(request, 'Deleted Course: {}'.format(course.title))
+            course.delete()
+            return HttpResponseRedirect(reverse('courses:course_list'))
     return render(request, 'courses/course_form.html', {'form': form, 'course': course })
+
+
+@login_required
+def course_delete(DeleteView):
+    model = models.Course
+    success_url = reverse('courses:course_list')
 
 
 @login_required
