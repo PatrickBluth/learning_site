@@ -72,7 +72,7 @@ def course_edit(request, course_pk):
 
 @login_required
 def text_create(request, course_pk):
-    course = get_object_or_404(models.Course, pk=course_pk, course__published=True)
+    course = get_object_or_404(models.Course, pk=course_pk, published=True)
     form = forms.TextForm()
 
     if request.method == 'POST':
@@ -81,7 +81,7 @@ def text_create(request, course_pk):
             text = form.save(commit=False)
             text.course = course
             text.save()
-            messages.success(request, 'New text post created!')
+            messages.success(request, 'New Text Post Created!')
             return HttpResponseRedirect(text.get_absolute_url())
     return render(request, 'courses/text_form.html', {'form': form, 'course': course})
 
