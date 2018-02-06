@@ -2,7 +2,7 @@ from itertools import chain
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Count, Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -12,10 +12,16 @@ from . import models, forms
 
 
 def course_list(request):
-    courses = models.Course.objects.filter(published=True)
+    courses = models.Course.objects.filter(
+        published=True
+    ).annotate(
+        total_steps=Count('text', distinct=True)+Count('quiz', distinct=True)
+    )
+    total = courses.aggregate(total=Sum('total_steps'))
     email = 'questsions@learning_site.com'
     return render(request, 'courses/course_list.html', {'courses': courses,
-                                                        'email': email})
+                                                        'email': email,
+                                                        'total': total})
 
 
 def course_detail(request, pk):
@@ -68,7 +74,7 @@ def course_edit(request, course_pk):
             messages.success(request, 'Deleted Course: {}'.format(course.title))
             course.delete()
             return HttpResponseRedirect(reverse('courses:course_list'))
-    return render(request, 'courses/course_form.html', {'form': form, 'course': course })
+    return render(request, 'courses/course_form.html', {'form': form, 'course': course})
 
 
 @login_required
@@ -243,17 +249,17 @@ def answer_form(request, question_pk, answer_pk=None):
     })
 
 
-def courses_by_teacher(request, teacher,):
+def courses_by_teacher(request, teacher, ):
     courses = models.Course.objects.filter(teacher__username=teacher, published=True)
     if not courses:
-        return render(request, 'courses/no_teacher.html', {'teacher':teacher})
+        return render(request, 'courses/no_teacher.html', {'teacher': teacher})
     return render(request, 'courses/course_list.html', {'courses': courses})
 
 
 def search(request):
     term = request.GET.get('q')
     courses = models.Course.objects.filter(
-       Q(title__icontains=term) | Q(description__icontains=term),
+        Q(title__icontains=term) | Q(description__icontains=term),
         published=True
     )
     return render(request, 'courses/course_list.html', {'courses': courses})
