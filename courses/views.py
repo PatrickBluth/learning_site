@@ -188,7 +188,7 @@ def question_create(request, quiz_pk, question_type, ):
         form = form_class(request.POST)
         answer_forms = forms.AnswerInlineFormSet(
             request.POST,
-            queryset=models.Answer.objects.non()
+            queryset=models.Answer.objects.none()
         )
 
         if form.is_valid() and answer_forms.is_valid():
